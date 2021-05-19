@@ -46,6 +46,7 @@ class UserController extends Controller
     {
         $data = [
             'titre' => "Invoice Client |",
+            'page' => "Invoice",
         ];
         return view('User.invoice', $data);
     }

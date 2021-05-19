@@ -126,25 +126,27 @@
 {{--        end header      --}}
 
         <div class="content">
-            <div class="container-fluid">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="navbar-toggler-icon icon-bar"></span>
-                    <span class="navbar-toggler-icon icon-bar"></span>
-                    <span class="navbar-toggler-icon icon-bar"></span>
-                </button>
-                <div class="pb-3 pt-0">
-                    <button id="minimizeSidebar" class="btn btn-just-icon btn-white btn-fab btn-round">
-                        <i class="material-icons text_align-center visible-on-sidebar-regular">more_vert</i>
-                        <i class="material-icons design_bullet-list-67 visible-on-sidebar-mini">more_vert</i>
-                        <div class="ripple-container"></div>
+            <div class="row">
+                <div class="container-fluid">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="navbar-toggler-icon icon-bar"></span>
+                        <span class="navbar-toggler-icon icon-bar"></span>
+                        <span class="navbar-toggler-icon icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" style="color:Black !important;" href="#">{{ $page }}</a>
+                    <div class="pb-3 pt-0">
+                        <button id="minimizeSidebar" class="btn btn-just-icon btn-white btn-fab btn-round">
+                            <i class="material-icons text_align-center visible-on-sidebar-regular">more_vert</i>
+                            <i class="material-icons design_bullet-list-67 visible-on-sidebar-mini">more_vert</i>
+                            <div class="ripple-container"></div>
+                        </button>
+                        <a class="navbar-brand" style="color:Black !important;" href="#">{{ $page }}</a>
+                    </div>
+
+                @yield('content')
+
                 </div>
-
-            @yield('content')
-
             </div>
         </div>
     </div>
