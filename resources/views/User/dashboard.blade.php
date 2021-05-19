@@ -93,7 +93,7 @@
                     </tr>
                     </tbody>
                 </table>
-                <button type="submit" name="send" class="btn btn-primary float-right">See All</button>
+                <a class="btn btn-primary float-right" href="{{ route('project') }}">See All</a>
             </div>
         </div>
     </div>
