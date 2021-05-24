@@ -8,7 +8,7 @@
                 <!-- <a class="navbar-brand" href="javascript:;">Login Page</a> -->
             </div>
             <div class="navbar-wrapper">
-                <a href="./register.html" class="btn btn-primary mt-0 float-right">
+                <a href="{{ route('register') }}" class="btn btn-primary mt-0 float-right">
                     <i class="material-icons">person_add</i>
                     Register</a>
             </div>

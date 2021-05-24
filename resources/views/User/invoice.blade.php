@@ -26,7 +26,9 @@
                                 <td class="text-success">60000 XAF</td>
                                 <td class="text-danger">90000XAF</td>
                                 <td>
-                                    <button type="submit" name="send" class="btn btn-primary"><a href="invoice_details.html" style="color:white !important;">Details</a></button>
+                                    <button type="submit" name="send" class="btn btn-primary">
+                                        <a href="{{ route('invoice-details') }}" style="color:white !important;">Details</a>
+                                    </button>
                                 </td>
                             </tr>
                             <tr>
@@ -36,7 +38,9 @@
                                 <td class="text-success">60000 XAF</td>
                                 <td class="text-danger">90000XAF</td>
                                 <td>
-                                    <button type="submit" name="send" class="btn btn-primary"><a href="invoice_details.html" style="color:white !important;">Details</a></button>
+                                    <button type="submit" name="send" class="btn btn-primary">
+                                        <a href="{{ route('invoice-details') }}" style="color:white !important;">Details</a>
+                                    </button>
                                 </td>
                             </tr>
                             <tr>
@@ -46,7 +50,9 @@
                                 <td class="text-success">60000 XAF</td>
                                 <td class="text-danger">90000XAF</td>
                                 <td>
-                                    <button type="submit" name="send" class="btn btn-primary"><a href="invoice_details.html" style="color:white !important;">Details</a></button>
+                                    <button type="submit" name="send" class="btn btn-primary">
+                                        <a href="{{ route('invoice-details') }}" style="color:white !important;">Details</a>
+                                    </button>
                                 </td>
                             </tr>
                             </tbody>
