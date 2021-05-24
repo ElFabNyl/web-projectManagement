@@ -1,6 +1,20 @@
 @extends('layouts.app')
 
 @section('content')
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top text-white">
+        <div class="container-fluid">
+            <div class="navbar-wrapper">
+                <!-- <a class="navbar-brand" href="javascript:;">Login Page</a> -->
+            </div>
+            <div class="navbar-wrapper">
+                <a href="{{ route('login') }}" class="btn btn-primary mt-0 float-right">
+                    <i class="material-icons">person</i>
+                    Login</a>
+            </div>
+        </div>
+    </nav>
+    <!-- End Navbar -->
     <div class="wrapper wrapper-full-page">
         <div class="page-header login-page header-filter ps img-connexion" filter-color="black">
             <div class="container">
@@ -9,15 +23,6 @@
                         <form class="form" method="" action="">
                             <div class="card card-signup">
                                 <h2 class="card-title text-center mt-3">Register</h2>
-                                <div class="social-line">
-                                    <a href="#pablo" class="btn btn-social btn-just-icon btn-round btn-facebook">
-                                        <i class="fa fa-facebook"></i>
-                                    </a>
-                                    <a href="#pablo" class="btn btn-social btn-just-icon btn-round btn-google">
-                                        <i class="fa fa-google"></i>
-                                    </a>
-                                </div>
-
                                 <div class="card-body mt-3">
                                     <span class="bmd-form-group">
                                         <div class="input-group">
