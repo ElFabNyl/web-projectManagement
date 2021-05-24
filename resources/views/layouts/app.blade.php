@@ -49,7 +49,7 @@
 <!--  Notifications Plugin    -->
 <script src="{{ asset('assets/js/plugins/bootstrap-notify.js') }}"></script>
 <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
-<script src="{{ asset'assets/js/material-dashboard.min.js?v=2.2.2') }}" type="text/javascript"></script>
+<script src="{{ asset('assets/js/material-dashboard.min.js?v=2.2.2') }}" type="text/javascript"></script>
 
 <!-- Sharrre libray -->
 <script src="{{ asset('assets/demo/jquery.sharrre.js') }}"></script>
