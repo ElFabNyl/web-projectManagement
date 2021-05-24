@@ -8,7 +8,7 @@
                 <!-- <a class="navbar-brand" href="javascript:;">Login Page</a> -->
             </div>
             <div class="navbar-wrapper">
-                <a href="./register.html" class="btn btn-primary mt-0 float-right">
+                <a href="{{ route('register') }}" class="btn btn-primary mt-0 float-right">
                     <i class="material-icons">person_add</i>
                     Register</a>
             </div>
@@ -24,14 +24,6 @@
                             <div class="card card-login">
                                 <div class="card-header card-header-rose text-center">
                                     <h4 class="card-title">Login</h4>
-                                    <div class="social-line">
-                                        <a href="#pablo" class="btn btn-just-icon btn-link btn-white">
-                                            <i class="fa fa-facebook-square"></i>
-                                        </a>
-                                        <a href="#pablo" class="btn btn-just-icon btn-link btn-white">
-                                            <i class="fa fa-google"></i>
-                                        </a>
-                                    </div>
                                 </div>
                                 <div class="card-body ">
                                     <span class="bmd-form-group">
