@@ -32,7 +32,7 @@ class RegisterController extends Controller
         ];
 
         $response = Api::post('user/register',$data);
-        
+
     }
 
 }
