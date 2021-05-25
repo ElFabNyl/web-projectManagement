@@ -20,7 +20,8 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-4 col-md-6 col-sm-8 ml-auto mr-auto">
-                        <form class="form" method="" action="">
+                        <form class="form" method="POST" action="{{ route('store') }}">
+                            @csrf
                             <div class="card card-signup">
                                 <h2 class="card-title text-center mt-3">Register</h2>
                                 <div class="card-body mt-3">
@@ -31,7 +32,17 @@
                                                     <i class="material-icons">face</i>
                                                 </span>
                                             </div>
-                                            <input type="email" class="form-control" placeholder="First name...">
+                                            <input type="email" class="form-control" placeholder="name..." name="name">
+                                        </div>
+                                    </span>
+                                    <br><span class="bmd-form-group">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">
+                                                    <i class="material-icons">face</i>
+                                                </span>
+                                            </div>
+                                            <input type="email" class="form-control" placeholder="last name..." name="last_name">
                                         </div>
                                     </span><br>
                                     <span class="bmd-form-group">
@@ -41,7 +52,7 @@
                                                     <i class="material-icons">phone</i>
                                                 </span>
                                             </div>
-                                            <input type="phone" class="form-control" placeholder="Phone...">
+                                            <input type="phone" class="form-control" placeholder="Phone..." name="phone">
                                         </div>
                                     </span><br>
                                     <span class="bmd-form-group">
@@ -51,7 +62,7 @@
                                                     <i class="material-icons">email</i>
                                                 </span>
                                             </div>
-                                            <input type="email" class="form-control" placeholder="Email...">
+                                            <input type="email" class="form-control" placeholder="Email..." name="email">
                                         </div>
                                     </span><br>
                                     <span class="bmd-form-group">
@@ -61,7 +72,7 @@
                                                     <i class="material-icons">lock_outline</i>
                                                 </span>
                                             </div>
-                                            <input type="password" class="form-control" placeholder="Password...">
+                                            <input type="password" class="form-control" placeholder="Password..." name="password">
                                         </div>
                                     </span><br>
                                     <span class="bmd-form-group">
@@ -72,12 +83,12 @@
                                                 </span>
                                             </div>
                                             <input type="password" class="form-control"
-                                                   placeholder="Confirm Password...">
+                                                   placeholder="Confirm Password..." name="password_confirmation">
                                         </div>
                                     </span>
                                 </div>
                                 <div class="card-footer justify-content-center">
-                                    <a href="#pablo_" class="btn btn-primary mt-4">Register</a>
+                                    <input type="submit" class="btn btn-primary mt-4" value="Register"/>
                                 </div>
                             </div>
                         </form>
