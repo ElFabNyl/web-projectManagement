@@ -26,7 +26,7 @@ class Api
                 "content-type: application/json"
             ),
         ));
-
+//  dd($curl);
         $response = curl_exec($curl);
 
         $err = curl_error($curl);
@@ -45,7 +45,7 @@ class Api
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
-            CURLOPT_URL => "http://127.0.0.1:8000/api/v1/{$endpoint}",
+            CURLOPT_URL => "http://127.0.0.1:8000/api/{$endpoint}",
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => "",
             CURLOPT_MAXREDIRS => 10,

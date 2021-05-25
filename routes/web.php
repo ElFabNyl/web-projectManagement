@@ -33,7 +33,7 @@ Route::get('/new-projets', [UserController::class, 'newprojetsUser'])->name('new
 Route::get('/invoice', [UserController::class, 'invoiceUser'])->name('invoices');
 Route::get('/invoice-details', [UserController::class, 'detailsinvoiceUser'])->name('invoice-details');
 
-Route::get('/login', [LoginController::class , 'loginIntegration'])->name('login');
+Route::post('/login', [LoginController::class , 'loginIntegration'])->name('login');
 
 // Register
 

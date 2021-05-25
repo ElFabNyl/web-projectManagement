@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use Illuminate\Support\Facades\Http;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Api\Api;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Http;
+use App\Providers\RouteServiceProvider;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
 {
@@ -40,78 +42,32 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-  /**
-     * * je commence par créer la fonction qui va me servir à faire des requetes vers l'API
-     * @param [Array] $data : Paramètres
-     * @param [String] $url : le endpoint
-     * @param [boolean] $raw : Permettant de savoir si on doit renvoyer les données brutes ou pas
-     *
-     * @return ..... les données.
-     * 
-     */
-    public static function callApi($params,$url, $raw=false)
-    {
-        $credentials = base64_encode('staff:~nbX}#%4j*YZ+Jk{9q');
-
-        $curl = curl_init();
-        curl_setopt($curl, CURLOPT_URL, $url);
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-//        curl_setopt($curl, CURLOPT_ENCODING, "");
-        curl_setopt($curl, CURLOPT_MAXREDIRS, 10);
-        curl_setopt($curl, CURLOPT_TIMEOUT, 30);
-        curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true);
-        curl_setopt($curl, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_1);
-        curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "POST");
-        curl_setopt($curl, CURLOPT_POSTFIELDS, $params);
-       
-
-        $data = curl_exec($curl);
-
-        $err = curl_error($curl);
-        curl_close($curl);
-
-        if($raw){
-            return $data;
-            exit();
-        }
-
-        $response = json_decode($data, true);
-
-        if ($err) {
-            $response = (array)$response;
-            return $response['error'] = $err;
-        }else {
-            return (array)$response;
-        }
-    }
-
-  // la fonction qui va gerer donc les choses...
-  public function loginIntegration(Request $request){
+  public function loginIntegration(Request $request){ 
 
      //l'api gere déjà la validation donc, je m'en fou... yiiiiiiiihaaaaa
-    // try {
-    // } catch (\Throwable $th) {
-    //     //throw $th; 
-    // }
-
-     
-         $postdata = [ 
+    try { 
+        $postdata = [ 
              'email' =>$request->email,
-             'password' => $request->password ];
-    
-    
+             'password' => $request->password
+            ];
     // bon j'appelle l'API, et je lui passe les deux batards la.
+    $retourApi= Api::post('user/login', $postdata);
+    // Je mets les infos du user en session 
+    Session::put("token", $retourApi["data"]["token"]);
+    Session::put("user", $retourApi["data"]["user"]);
+    Session::put("save_temp_order", "logged");
+    $valeur = Session::get('token'); 
 
-    $retourApi= self::callApi($postdata, 'http://127.0.0.1:2222/api/user/login',); dd($retourApi);
+    if(!is_null($valeur)){
 
-    
-    
-    // return Http::get('http://127.0.0.1:2222/api/user/login')->body();
+        $data =[ 'titre' => 'Dashboard', 'page' => "dashboard"];
+        return view('User/dashboard', $data);
+    }
+    } catch (\Throwable $th) {
+        //throw $th; 
+        return $th->getMessage(); 
+    }
 
-
-
-
-    
   }
  
 }
