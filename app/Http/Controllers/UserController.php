@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    public function dashoardUser ()
+    public function dashboardUser ()
     {
        $data = [
            'titre' => "Dashboard Client |",
