@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\Auth\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,3 +31,5 @@ Route::get('/notification', [UserController::class, 'notificationUser'])->name('
 Route::get('/new-projets', [UserController::class, 'newprojetsUser'])->name('new-projets');
 Route::get('/invoice', [UserController::class, 'invoiceUser'])->name('invoices');
 Route::get('/invoice-details', [UserController::class, 'detailsinvoiceUser'])->name('invoice-details');
+
+Route::get('/login', [LoginController::class , 'loginIntegration'])->name('login');

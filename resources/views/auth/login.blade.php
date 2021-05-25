@@ -20,7 +20,8 @@
             <div class="container">
                 <div class="row ">
                     <div class="col-lg-4 col-md-6 col-sm-8 ml-auto mr-auto">
-                        <form class="form" method="" action="">
+                        <form class="form" method="GET" action="{{ route('login') }}">
+                            @csrf
                             <div class="card card-login">
                                 <div class="card-header card-header-rose text-center">
                                     <h4 class="card-title">Login</h4>
@@ -33,7 +34,7 @@
                                                     <i class="material-icons">email</i>
                                                 </span>
                                             </div>
-                                            <input type="email" class="form-control" placeholder="Email...">
+                                            <input type="email" class="form-control" placeholder="Email..." name="email">
                                         </div>
                                     </span><br>
                                     <span class="bmd-form-group">
@@ -43,12 +44,12 @@
                                                     <i class="material-icons">lock_outline</i>
                                                 </span>
                                             </div>
-                                            <input type="password" class="form-control" placeholder="Password...">
+                                            <input type="password" class="form-control" placeholder="Password..."  name="password">
                                         </div>
                                     </span>
                                 </div>
                                 <div class="card-footer justify-content-center">
-                                    <a href="#pablo" class="btn btn-rose btn-link btn-lg">Sign in</a>
+                                    <input type="submit" class="btn btn-rose btn-link btn-lg" value="Sign In" />
                                 </div>
                             </div>
                         </form>
