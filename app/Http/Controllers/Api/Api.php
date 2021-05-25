@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers\Api;
 
-use Illuminate\Support\Facades\Request;
-
 class Api
 {
     public static function post(string $endpoint, ?array $options): ?array
