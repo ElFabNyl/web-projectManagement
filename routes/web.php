@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Auth\LoginController;
@@ -33,3 +34,8 @@ Route::get('/invoice', [UserController::class, 'invoiceUser'])->name('invoices')
 Route::get('/invoice-details', [UserController::class, 'detailsinvoiceUser'])->name('invoice-details');
 
 Route::get('/login', [LoginController::class , 'loginIntegration'])->name('login');
+
+// Register
+
+Route::get('/register',[RegisterController::class,'index'])->name('register');
+Route::post('/register',[RegisterController::class,'store'])->name('store');
