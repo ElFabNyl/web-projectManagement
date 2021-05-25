@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 
@@ -30,3 +31,9 @@ Route::get('/notification', [UserController::class, 'notificationUser'])->name('
 Route::get('/new-projets', [UserController::class, 'newprojetsUser'])->name('new-projets');
 Route::get('/invoice', [UserController::class, 'invoiceUser'])->name('invoices');
 Route::get('/invoice-details', [UserController::class, 'detailsinvoiceUser'])->name('invoice-details');
+
+
+// Register
+
+Route::get('/register',[RegisterController::class,'index'])->name('register');
+Route::post('/register',[RegisterController::class,'store'])->name('store');
