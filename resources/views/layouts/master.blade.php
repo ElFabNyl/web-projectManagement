@@ -28,6 +28,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/material-icons/css/material-icons.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/material-icons/css/material-icons.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/material-icons/iconfont/material-icons.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style.css') }}">
 
 </head>
 
