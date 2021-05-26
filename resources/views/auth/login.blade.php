@@ -21,6 +21,7 @@
                 <div class="row ">
                     <div class="col-lg-4 col-md-6 col-sm-8 ml-auto mr-auto">
                         <form class="form" method="" action="">
+                            @csrf
                             <div class="card card-login">
                                 <div class="card-header card-header-rose text-center">
                                     <h4 class="card-title">Login</h4>
@@ -33,7 +34,12 @@
                                                     <i class="material-icons">email</i>
                                                 </span>
                                             </div>
-                                            <input type="email" class="form-control" placeholder="Email...">
+                                            <input type="email" class="form-control @error('email') is-invalid @enderror" placeholder="Email...">
+                                                @error('email')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
                                         </div>
                                     </span><br>
                                     <span class="bmd-form-group">
@@ -43,7 +49,12 @@
                                                     <i class="material-icons">lock_outline</i>
                                                 </span>
                                             </div>
-                                            <input type="password" class="form-control" placeholder="Password...">
+                                            <input type="password" class="form-control @error('password') is-invalid @enderror" type="password" placeholder="Password...">
+                                            @error('password')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
                                         </div>
                                     </span>
                                 </div>

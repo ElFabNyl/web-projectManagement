@@ -54,25 +54,25 @@
             </div>
             <ul class="nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('dashboard') }}">
+                    <a class="nav-link{{ activeLI(['dashboard'], true) }}" href="{{ route('dashboard') }}">
                         <i class="material-icons">dashboard</i>
                         <p>Dashboard</p>
                     </a>
                 </li>
                 <li class="nav-item ">
-                    <a class="nav-link" href="{{ route('project') }}">
+                    <a class="nav-link {{ activeLI(['project','new-projets'], true) }}" href="{{ route('project') }}">
                         <i class="fa fa-credit-card"></i>
                         <p>Project</p>
                     </a>
                 </li>
                 <li class="nav-item ">
-                    <a class="nav-link" href="{{ route('notification') }}">
+                    <a class="nav-link {{ activeLI(['notification'], true) }}" href="{{ route('notification') }}">
                         <i class="fa fa-bell"></i>
                         <p>Notification</p>
                     </a>
                 </li>
                 <li class="nav-item ">
-                    <a class="nav-link" href="{{ route('invoices') }}">
+                    <a class="nav-link {{ activeLI(['invoices', 'invoice-details'], true) }}" href="{{ route('invoices') }}">
                         <i class="fa fa-money"></i>
                         <p>Invoices</p>
                     </a>

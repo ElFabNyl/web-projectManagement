@@ -21,6 +21,7 @@
                 <div class="row">
                     <div class="col-lg-4 col-md-6 col-sm-8 ml-auto mr-auto">
                         <form class="form" method="" action="">
+                            @csrf
                             <div class="card card-signup">
                                 <h2 class="card-title text-center mt-3">Register</h2>
                                 <div class="card-body mt-3">
@@ -31,7 +32,12 @@
                                                     <i class="material-icons">face</i>
                                                 </span>
                                             </div>
-                                            <input type="email" class="form-control" placeholder="First name...">
+                                            <input type="name" class="form-control @error('name') is-invalid @enderror" placeholder="First name...">
+                                             @error('name')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
                                         </div>
                                     </span><br>
                                     <span class="bmd-form-group">
@@ -41,7 +47,12 @@
                                                     <i class="material-icons">phone</i>
                                                 </span>
                                             </div>
-                                            <input type="phone" class="form-control" placeholder="Phone...">
+                                            <input type="phone" class="form-control @error('phone') is-invalid @enderror" placeholder="Phone...">
+                                            @error('phone')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
                                         </div>
                                     </span><br>
                                     <span class="bmd-form-group">
@@ -51,7 +62,12 @@
                                                     <i class="material-icons">email</i>
                                                 </span>
                                             </div>
-                                            <input type="email" class="form-control" placeholder="Email...">
+                                            <input type="email" class="form-control @error('email') is-invalid @enderror" placeholder="Email...">
+                                            @error('email')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
                                         </div>
                                     </span><br>
                                     <span class="bmd-form-group">
@@ -61,7 +77,12 @@
                                                     <i class="material-icons">lock_outline</i>
                                                 </span>
                                             </div>
-                                            <input type="password" class="form-control" placeholder="Password...">
+                                            <input type="password" class="form-control @error('password') is-invalid @enderror" placeholder="Password...">
+                                             @error('password')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
                                         </div>
                                     </span><br>
                                     <span class="bmd-form-group">
