@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title')
+    {{ __('Login') }}
+@endsection
+
 @section('content')
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top text-white">
@@ -14,6 +18,7 @@
             </div>
         </div>
     </nav>
+
     <!-- End Navbar -->
     <div class="wrapper wrapper-full-page">
         <div class="page-header login-page header-filter ps img-connexion" filter-color="black">
