@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\Auth\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,9 +26,16 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 //route du user
-Route::get('/dashboard', [UserController::class, 'dashoardUser'])->name('dashboard');
+Route::get('/dashboard', [UserController::class, 'dashoarbdUser'])->name('dashboard');
 Route::get('/projets', [UserController::class, 'projetsUser'])->name('project');
 Route::get('/notification', [UserController::class, 'notificationUser'])->name('notification');
 Route::get('/new-projets', [UserController::class, 'newprojetsUser'])->name('new-projets');
 Route::get('/invoice', [UserController::class, 'invoiceUser'])->name('invoices');
 Route::get('/invoice-details', [UserController::class, 'detailsinvoiceUser'])->name('invoice-details');
+
+Route::post('/login', [LoginController::class , 'loginIntegration'])->name('login');
+
+// Register
+
+Route::get('/register',[RegisterController::class,'index'])->name('register');
+Route::post('/register',[RegisterController::class,'store'])->name('store');

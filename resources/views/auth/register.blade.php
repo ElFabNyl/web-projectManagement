@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title')
+    {{ __('Register') }}
+@endsection
+
 @section('content')
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top text-white">
@@ -20,7 +24,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-4 col-md-6 col-sm-8 ml-auto mr-auto">
-                        <form class="form" method="" action="">
+                        <form class="form" action="{{ route('store') }}" id="send">
                             @csrf
                             <div class="card card-signup">
                                 <h2 class="card-title text-center mt-3">Register</h2>
@@ -32,12 +36,19 @@
                                                     <i class="material-icons">face</i>
                                                 </span>
                                             </div>
-                                            <input type="name" class="form-control @error('name') is-invalid @enderror" placeholder="First name...">
-                                             @error('name')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
+
+                                            <input type="name" class="form-control" placeholder="name..." name="name">
+                                        </div>
+                                    </span>
+                                    <br><span class="bmd-form-group">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">
+                                                    <i class="material-icons">face</i>
                                                 </span>
-                                            @enderror
+                                            </div>
+                                            <input type="lastname" class="form-control" placeholder="last name..."
+                                                   name="last_name">
                                         </div>
                                     </span><br>
                                     <span class="bmd-form-group">
@@ -47,12 +58,8 @@
                                                     <i class="material-icons">phone</i>
                                                 </span>
                                             </div>
-                                            <input type="phone" class="form-control @error('phone') is-invalid @enderror" placeholder="Phone...">
-                                            @error('phone')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
+                                            <input type="phone" class="form-control" placeholder="Phone..."
+                                                   name="phone">
                                         </div>
                                     </span><br>
                                     <span class="bmd-form-group">
@@ -62,12 +69,8 @@
                                                     <i class="material-icons">email</i>
                                                 </span>
                                             </div>
-                                            <input type="email" class="form-control @error('email') is-invalid @enderror" placeholder="Email...">
-                                            @error('email')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
+                                            <input type="email" class="form-control" placeholder="Email..."
+                                                   name="email">
                                         </div>
                                     </span><br>
                                     <span class="bmd-form-group">
@@ -77,12 +80,8 @@
                                                     <i class="material-icons">lock_outline</i>
                                                 </span>
                                             </div>
-                                            <input type="password" class="form-control @error('password') is-invalid @enderror" placeholder="Password...">
-                                             @error('password')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
+                                            <input type="password" class="form-control" placeholder="Password..."
+                                                   name="password">
                                         </div>
                                     </span><br>
                                     <span class="bmd-form-group">
@@ -93,12 +92,12 @@
                                                 </span>
                                             </div>
                                             <input type="password" class="form-control"
-                                                   placeholder="Confirm Password...">
+                                                   placeholder="Confirm Password..." name="password_confirmation">
                                         </div>
                                     </span>
                                 </div>
                                 <div class="card-footer justify-content-center">
-                                    <a href="#pablo_" class="btn btn-primary mt-4">Register</a>
+                                    <input type="submit" class="btn btn-primary mt-4" value="Register"/>
                                 </div>
                             </div>
                         </form>
@@ -114,4 +113,72 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('js')
+
+    <script>
+
+        $('#send').on('submit', function (e) {
+            e.preventDefault();
+
+            $.ajax({
+                type: 'post',
+                url: $(this).attr('action'),
+                data: $(this).serialize(),
+                datatype: 'json',
+                success: function (response) {
+                    if (!response.status) {
+                        $.each(response.error, function (data) {
+                            toastr.options =
+                                {
+                                    "closeButton": true,
+                                    "debug": false,
+                                    "newestOnTop": false,
+                                    "progressBar": true,
+                                    "positionClass": "toast-bottom-right",
+                                    "preventDuplicates": true,
+                                    "onclick": null,
+                                    "showDuration": "300",
+                                    "hideDuration": "1000",
+                                    "timeOut": "5000",
+                                    "extendedTimeOut": "1000",
+                                    "showEasing": "swing",
+                                    "hideEasing": "linear",
+                                    "showMethod": "fadeIn",
+                                    "hideMethod": "fadeOut"
+                                }
+                            toastr.error(response.error[data]);
+                        })
+                    }
+
+                    if (response.status) {
+                        $("#send")[0].reset();
+                        toastr.options =
+                            {
+                                "closeButton": true,
+                                "debug": false,
+                                "newestOnTop": false,
+                                "progressBar": true,
+                                "positionClass": "toast-top-center",
+                                "preventDuplicates": true,
+                                "onclick": null,
+                                "showDuration": "300",
+                                "hideDuration": "1000",
+                                "timeOut": "5000",
+                                "extendedTimeOut": "1000",
+                                "showEasing": "swing",
+                                "hideEasing": "linear",
+                                "showMethod": "fadeIn",
+                                "hideMethod": "fadeOut"
+                            }
+                        toastr.success('Your Account are successfully Created Please Login Now');
+                    }
+                }
+            })
+        })
+
+
+    </script>
+
 @endsection

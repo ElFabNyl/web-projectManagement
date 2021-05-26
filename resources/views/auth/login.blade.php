@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title')
+    {{ __('Login') }}
+@endsection
+
 @section('content')
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top text-white">
@@ -14,13 +18,14 @@
             </div>
         </div>
     </nav>
+
     <!-- End Navbar -->
     <div class="wrapper wrapper-full-page">
         <div class="page-header login-page header-filter ps img-connexion" filter-color="black">
             <div class="container">
                 <div class="row ">
                     <div class="col-lg-4 col-md-6 col-sm-8 ml-auto mr-auto">
-                        <form class="form" method="" action="">
+                        <form class="form" method="POST" action="{{ route('login') }}">
                             @csrf
                             <div class="card card-login">
                                 <div class="card-header card-header-rose text-center">
@@ -34,12 +39,7 @@
                                                     <i class="material-icons">email</i>
                                                 </span>
                                             </div>
-                                            <input type="email" class="form-control @error('email') is-invalid @enderror" placeholder="Email...">
-                                                @error('email')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                                @enderror
+                                            <input type="email" class="form-control" placeholder="Email..." name="email">
                                         </div>
                                     </span><br>
                                     <span class="bmd-form-group">
@@ -49,17 +49,12 @@
                                                     <i class="material-icons">lock_outline</i>
                                                 </span>
                                             </div>
-                                            <input type="password" class="form-control @error('password') is-invalid @enderror" type="password" placeholder="Password...">
-                                            @error('password')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
+                                            <input type="password" class="form-control" placeholder="Password..."  name="password">
                                         </div>
                                     </span>
                                 </div>
                                 <div class="card-footer justify-content-center">
-                                    <a href="#pablo" class="btn btn-rose btn-link btn-lg">Sign in</a>
+                                    <input type="submit" class="btn btn-rose btn-link btn-lg" value="Sign In" />
                                 </div>
                             </div>
                         </form>
