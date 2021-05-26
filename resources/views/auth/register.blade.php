@@ -20,7 +20,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-4 col-md-6 col-sm-8 ml-auto mr-auto">
-                        <form class="form" method="POST" action="{{ route('store') }}">
+                        <form class="form" action="{{ route('store') }}" id="send">
                             @csrf
                             <div class="card card-signup">
                                 <h2 class="card-title text-center mt-3">Register</h2>
@@ -32,7 +32,7 @@
                                                     <i class="material-icons">face</i>
                                                 </span>
                                             </div>
-                                            <input type="email" class="form-control" placeholder="name..." name="name">
+                                            <input type="name" class="form-control" placeholder="name..." name="name">
                                         </div>
                                     </span>
                                     <br><span class="bmd-form-group">
@@ -42,7 +42,8 @@
                                                     <i class="material-icons">face</i>
                                                 </span>
                                             </div>
-                                            <input type="email" class="form-control" placeholder="last name..." name="last_name">
+                                            <input type="lastname" class="form-control" placeholder="last name..."
+                                                   name="last_name">
                                         </div>
                                     </span><br>
                                     <span class="bmd-form-group">
@@ -52,7 +53,8 @@
                                                     <i class="material-icons">phone</i>
                                                 </span>
                                             </div>
-                                            <input type="phone" class="form-control" placeholder="Phone..." name="phone">
+                                            <input type="phone" class="form-control" placeholder="Phone..."
+                                                   name="phone">
                                         </div>
                                     </span><br>
                                     <span class="bmd-form-group">
@@ -62,7 +64,8 @@
                                                     <i class="material-icons">email</i>
                                                 </span>
                                             </div>
-                                            <input type="email" class="form-control" placeholder="Email..." name="email">
+                                            <input type="email" class="form-control" placeholder="Email..."
+                                                   name="email">
                                         </div>
                                     </span><br>
                                     <span class="bmd-form-group">
@@ -72,7 +75,8 @@
                                                     <i class="material-icons">lock_outline</i>
                                                 </span>
                                             </div>
-                                            <input type="password" class="form-control" placeholder="Password..." name="password">
+                                            <input type="password" class="form-control" placeholder="Password..."
+                                                   name="password">
                                         </div>
                                     </span><br>
                                     <span class="bmd-form-group">
@@ -104,4 +108,72 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('js')
+
+    <script>
+
+        $('#send').on('submit', function (e) {
+            e.preventDefault();
+
+            $.ajax({
+                type: 'post',
+                url: $(this).attr('action'),
+                data: $(this).serialize(),
+                datatype: 'json',
+                success: function (response) {
+                    if (!response.status) {
+                        $.each(response.error, function (data) {
+                            toastr.options =
+                                {
+                                    "closeButton": true,
+                                    "debug": false,
+                                    "newestOnTop": false,
+                                    "progressBar": true,
+                                    "positionClass": "toast-bottom-right",
+                                    "preventDuplicates": true,
+                                    "onclick": null,
+                                    "showDuration": "300",
+                                    "hideDuration": "1000",
+                                    "timeOut": "5000",
+                                    "extendedTimeOut": "1000",
+                                    "showEasing": "swing",
+                                    "hideEasing": "linear",
+                                    "showMethod": "fadeIn",
+                                    "hideMethod": "fadeOut"
+                                }
+                            toastr.error(response.error[data]);
+                        })
+                    }
+
+                    if (response.status) {
+                        $("#send")[0].reset();
+                        toastr.options =
+                            {
+                                "closeButton": true,
+                                "debug": false,
+                                "newestOnTop": false,
+                                "progressBar": true,
+                                "positionClass": "toast-top-center",
+                                "preventDuplicates": true,
+                                "onclick": null,
+                                "showDuration": "300",
+                                "hideDuration": "1000",
+                                "timeOut": "5000",
+                                "extendedTimeOut": "1000",
+                                "showEasing": "swing",
+                                "hideEasing": "linear",
+                                "showMethod": "fadeIn",
+                                "hideMethod": "fadeOut"
+                            }
+                        toastr.success('Your Account are successfully Created Please Login Now');
+                    }
+                }
+            })
+        })
+
+
+    </script>
+
 @endsection
