@@ -3,6 +3,7 @@
 use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\Auth\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +33,7 @@ Route::get('/new-projets', [UserController::class, 'newprojetsUser'])->name('new
 Route::get('/invoice', [UserController::class, 'invoiceUser'])->name('invoices');
 Route::get('/invoice-details', [UserController::class, 'detailsinvoiceUser'])->name('invoice-details');
 
+Route::post('/login', [LoginController::class , 'loginIntegration'])->name('login');
 
 // Register
 
