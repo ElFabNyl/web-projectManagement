@@ -22,6 +22,12 @@
     <!-- CSS Files -->
     <link href="{{ asset('assets/css/material-dashboard.min.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 </head>
 
 <body class="off-canvas-sidebar" data-new-gr-c-s-check-loaded="14.1009.0" data-gr-ext-installed="">
@@ -54,7 +60,6 @@
 <!-- Sharrre libray -->
 <script src="{{ asset('assets/demo/jquery.sharrre.js') }}"></script>
 
-
 <script>
     $(document).ready(function () {
         md.checkFullPageBackgroundImage();
@@ -64,6 +69,8 @@
         }, 700);
     });
 </script>
+
+@yield('js')
 
 
 <div id="mfa_inject_cartdata" hidden="hidden"></div>
