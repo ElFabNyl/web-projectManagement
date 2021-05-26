@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Api\Api;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Response;
 
 class RegisterController extends Controller
 {
@@ -32,6 +33,13 @@ class RegisterController extends Controller
         ];
 
         $response = Api::post('user/register',$data);
+
+        if(!$response['status'] && $response['error'] > 0) {
+
+            return Response::json($response);
+        }
+
+        return Response::json($response);
 
     }
 
