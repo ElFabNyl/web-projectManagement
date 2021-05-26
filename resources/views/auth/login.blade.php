@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title')
+    {{ __('Login') }}
+@endsection
+
 @section('content')
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top text-white">
@@ -15,22 +19,6 @@
         </div>
     </nav>
 
-    @if(Session::has('success'))
-
-        <div class="modal fade subscibe-modal modal-two" id="subscibeModal1" role="dialog">
-            <div class="modal-dialog modal-lg modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-body">
-                        <h2>Thank you.</h2>
-                        <p>{{Session::get('success')}}. </p>
-
-                        <a href="#" class="close-modal" data-dismiss="modal"><i class="far fa-times"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    @endif
     <!-- End Navbar -->
     <div class="wrapper wrapper-full-page">
         <div class="page-header login-page header-filter ps img-connexion" filter-color="black">
