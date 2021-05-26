@@ -3,9 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Api\Api;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
 
+/**
+ * Class RegisterController
+ * @package App\Http\Controllers
+ */
 class RegisterController extends Controller
 {
 
@@ -20,6 +25,7 @@ class RegisterController extends Controller
 
     /**
      * @param Request $request
+     * @return JsonResponse
      */
     public function store(Request $request)
     {
