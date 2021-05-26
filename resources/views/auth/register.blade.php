@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title')
+    {{ __('Register') }}
+@endsection
+
 @section('content')
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top text-white">
