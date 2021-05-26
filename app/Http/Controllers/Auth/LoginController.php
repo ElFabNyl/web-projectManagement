@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Http;
 use App\Providers\RouteServiceProvider;
+use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
@@ -42,32 +43,30 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-  public function loginIntegration(Request $request){ 
+    public function loginIntegration(Request $request)
+    {
 
-     //l'api gere déjà la validation donc, je m'en fou... yiiiiiiiihaaaaa
-    try { 
-        $postdata = [ 
-             'email' =>$request->email,
-             'password' => $request->password
+            $postdata = [
+                'email' => $request->email,
+                'password' => $request->password
             ];
-    // bon j'appelle l'API, et je lui passe les deux batards la.
-    $retourApi= Api::post('user/login', $postdata);
-    // Je mets les infos du user en session 
-    Session::put("token", $retourApi["data"]["token"]);
-    Session::put("user", $retourApi["data"]["user"]);
-    Session::put("save_temp_order", "logged");
-    $valeur = Session::get('token'); 
+            // bon j'appelle l'API, et je lui passe les deux batards la.
+            $retourApi = Api::post('user/login', $postdata);
 
-    if(!is_null($valeur)){
+            if(!$retourApi['status']) {
+                return Response::json($retourApi);
+            }
+            // Je mets les infos du user en session
+            Session::put("token", $retourApi["data"]["token"]);
+            Session::put("user", $retourApi["data"]["user"]);
+            Session::put("success", 'Your are successfully logged');
+            Session::put("save_temp_order", "logged");
 
-        $data =[ 'titre' => 'Dashboard', 'page' => "dashboard"];
-        return view('User/dashboard', $data);
+            $data = [
+                'status' => $retourApi['status'],
+            ];
+                return Response::json($data);
+
     }
-    } catch (\Throwable $th) {
-        //throw $th; 
-        return $th->getMessage(); 
-    }
 
-  }
- 
 }

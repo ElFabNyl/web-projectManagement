@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <link rel="shortcut icon" type="image/png" href="images/pharma.png">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="icon" type="image/png" href="{{ asset('assets/img/favicon.png') }}">
     <link rel="stylesheet" href="{{ asset('assets/fontawesome/css/fontawesome.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/fontawesome/css/brands.css') }}">
@@ -28,10 +29,40 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/material-icons/css/material-icons.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/material-icons/css/material-icons.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/material-icons/iconfont/material-icons.css') }}">
+    <link rel="stylesheet" type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 
 </head>
 
 <body class="sidebar-mini">
+
+@if(Session::has('message'))
+
+    <script>
+        toastr.options = {
+            "closeButton": false,
+            "debug": false,
+            "newestOnTop": false,
+            "progressBar": false,
+            "positionClass": "toast-top-right",
+            "preventDuplicates": false,
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "5000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        }
+
+        toastr.success("{{ Session::get('message') }}")
+    </script>
+
+@endif
 <div class="wrapper ">
     <div class="sidebar ps" data-color="purple" data-background-color="white" data-image="{{ asset('assets/img/sidebar-3.jpg') }}">
         <div class="sidebar-wrapper ps ps--active-y">
@@ -49,7 +80,7 @@
                     </span>
                 </div>
                 <div class="user-info">
-                    <a href="#" class="simple-text logo-normal">User Name</a>
+                    <a href="#" class="simple-text logo-normal">{{ Session::get('user')['name'] }}</a>
                 </div>
             </div>
             <ul class="nav">
@@ -78,7 +109,7 @@
                     </a>
                 </li>
                 <li class="nav-item ">
-                    <a class="nav-link" href="{{ route('login') }}">
+                    <a class="nav-link" href="{{ route('logout') }}">
                         <i class="fa fa-sign-out"></i>
                         <p>Log out</p>
                     </a>
@@ -439,6 +470,13 @@
         table.on('click', '.like', function () {
             alert('You clicked on Like button');
         });
+    });
+</script>
+
+<script>
+
+    $.ajaxSetup({
+        headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
     });
 </script>
 

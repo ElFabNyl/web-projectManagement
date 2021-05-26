@@ -88,7 +88,8 @@
                         <td class="text-danger">Canceled</td>
                         <td>
                             <button type="submit" name="send" class="btn btn-primary">
-                                <a href="{{ route('new-projets') }}" style="color:white !important;">Details</a></button>
+                                <a href="{{ route('new-projets') }}" style="color:white !important;">Details</a>
+                            </button>
                         </td>
                     </tr>
                     </tbody>
@@ -97,4 +98,12 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('js')
+    <script>
+
+
+
+    </script>
 @endsection
