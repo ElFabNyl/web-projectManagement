@@ -38,31 +38,6 @@
 
 <body class="sidebar-mini">
 
-@if(Session::has('message'))
-
-    <script>
-        toastr.options = {
-            "closeButton": false,
-            "debug": false,
-            "newestOnTop": false,
-            "progressBar": false,
-            "positionClass": "toast-top-right",
-            "preventDuplicates": false,
-            "onclick": null,
-            "showDuration": "300",
-            "hideDuration": "1000",
-            "timeOut": "5000",
-            "extendedTimeOut": "1000",
-            "showEasing": "swing",
-            "hideEasing": "linear",
-            "showMethod": "fadeIn",
-            "hideMethod": "fadeOut"
-        }
-
-        toastr.success("{{ Session::get('message') }}")
-    </script>
-
-@endif
 <div class="wrapper ">
     <div class="sidebar ps" data-color="purple" data-background-color="white" data-image="{{ asset('assets/img/sidebar-3.jpg') }}">
         <div class="sidebar-wrapper ps ps--active-y">
