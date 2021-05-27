@@ -34,12 +34,14 @@
 <body class="off-canvas-sidebar" data-new-gr-c-s-check-loaded="14.1009.0" data-gr-ext-installed="">
 <!-- Extra details for Live View on GitHub Pages -->
 <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NKDMSK6" height="0" width="0"
-                  style="display:none;visibility:hidden"></iframe></noscript>
+<noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NKDMSK6" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe>
+</noscript>
 <!-- End Google Tag Manager (noscript) -->
 
 
-            @yield('content')
+@yield('content')
 
 
 <!--   Core JS Files   -->
