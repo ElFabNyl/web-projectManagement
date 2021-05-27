@@ -25,7 +25,7 @@
             <div class="container">
                 <div class="row ">
                     <div class="col-lg-4 col-md-6 col-sm-8 ml-auto mr-auto">
-                        <form class="form" method="POST" action="{{ route('login') }}">
+                        <form class="form" action="{{ route('login') }}" id="connect">
                             @csrf
                             <div class="card card-login">
                                 <div class="card-header card-header-rose text-center">
@@ -39,7 +39,8 @@
                                                     <i class="material-icons">email</i>
                                                 </span>
                                             </div>
-                                            <input type="email" class="form-control" placeholder="Email..." name="email">
+                                            <input type="email" class="form-control" placeholder="Email..."
+                                                   name="email">
                                         </div>
                                     </span><br>
                                     <span class="bmd-form-group">
@@ -49,19 +50,19 @@
                                                     <i class="material-icons">lock_outline</i>
                                                 </span>
                                             </div>
-                                            <input type="password" class="form-control" placeholder="Password..."  name="password">
+                                            <input type="password" class="form-control" placeholder="Password..."
+                                                   name="password">
                                         </div>
                                     </span>
                                 </div>
                                 <div class="card-footer justify-content-center">
-                                    <input type="submit" class="btn btn-rose btn-link btn-lg" value="Sign In" />
+                                    <input type="submit" class="btn btn-rose btn-link btn-lg" value="Sign In"/>
                                 </div>
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
-
             <div class="ps__rail-x" style="left: 0px; bottom: 0px;">
                 <div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div>
             </div>
@@ -70,4 +71,95 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('js')
+
+    <script>
+        $('#connect').on('submit', function (e) {
+            e.preventDefault()
+
+            $.ajax({
+                type: 'POST',
+                url: $(this).attr('action'),
+                data: $(this).serialize(),
+                success: function (response) {
+                    if (!response.status && response.error) {
+                        $.each(response.error, function (data) {
+                            toastr.options =
+                                {
+                                    "closeButton": true,
+                                    "debug": false,
+                                    "newestOnTop": false,
+                                    "progressBar": true,
+                                    "positionClass": "toast-bottom-right",
+                                    "preventDuplicates": true,
+                                    "onclick": null,
+                                    "showDuration": "300",
+                                    "hideDuration": "1000",
+                                    "timeOut": "5000",
+                                    "extendedTimeOut": "1000",
+                                    "showEasing": "swing",
+                                    "hideEasing": "linear",
+                                    "showMethod": "fadeIn",
+                                    "hideMethod": "fadeOut"
+                                }
+                            toastr.warning(response.error[data]);
+                        })
+                    }
+
+                    if (!response.status && response.message) {
+
+                        toastr.options =
+                            {
+                                "closeButton": true,
+                                "debug": false,
+                                "newestOnTop": false,
+                                "progressBar": true,
+                                "positionClass": "toast-top-center",
+                                "preventDuplicates": true,
+                                "onclick": null,
+                                "showDuration": "300",
+                                "hideDuration": "1000",
+                                "timeOut": "5000",
+                                "extendedTimeOut": "1000",
+                                "showEasing": "swing",
+                                "hideEasing": "linear",
+                                "showMethod": "fadeIn",
+                                "hideMethod": "fadeOut"
+                            }
+                            toastr.info(response.message);
+                    }
+
+                    if(response.status){
+
+                        console.log(response)
+                        location.href = "{{ route('dashboard') }}"
+                    }
+                },
+                error: function () {
+                    toastr.options = {
+                        "closeButton": false,
+                        "debug": false,
+                        "newestOnTop": false,
+                        "progressBar": true,
+                        "positionClass": "toast-top-center",
+                        "preventDuplicates": false,
+                        "onclick": null,
+                        "showDuration": "300",
+                        "hideDuration": "1000",
+                        "timeOut": "5000",
+                        "extendedTimeOut": "1000",
+                        "showEasing": "swing",
+                        "hideEasing": "linear",
+                        "showMethod": "fadeIn",
+                        "hideMethod": "fadeOut"
+                    }
+                    toastr.error('Unable to established connection. Please Try later');
+
+                }
+            })
+        })
+    </script>
+
 @endsection

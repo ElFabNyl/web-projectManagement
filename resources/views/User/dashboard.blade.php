@@ -88,7 +88,8 @@
                         <td class="text-danger">Canceled</td>
                         <td>
                             <button type="submit" name="send" class="btn btn-primary">
-                                <a href="{{ route('new-projets') }}" style="color:white !important;">Details</a></button>
+                                <a href="{{ route('new-projets') }}" style="color:white !important;">Details</a>
+                            </button>
                         </td>
                     </tr>
                     </tbody>
@@ -97,4 +98,34 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('js')
+    <script>
+        @if(Session::has('success'))
+
+        toastr.options = {
+            "closeButton": false,
+            "debug": false,
+            "newestOnTop": false,
+            "progressBar": false,
+            "positionClass": "toast-top-right",
+            "preventDuplicates": false,
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "5000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        }
+
+        toastr.success("{{ session('success') }}")
+
+    @endif
+
+
+    </script>
 @endsection

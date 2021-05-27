@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Api;
 
+use Illuminate\Support\Facades\Session;
+
 class Api
 {
     public static function post(string $endpoint, ?array $options): ?array
@@ -38,7 +40,7 @@ class Api
         return json_decode($response, TRUE);
     }
 
-    public function get(string $endpoint, ?array $options, string $token): ?array
+    public function get(string $endpoint, ?array $options): ?array
     {
         $curl = curl_init();
         $data = json_encode($options);
@@ -53,7 +55,7 @@ class Api
             CURLOPT_CUSTOMREQUEST => "GET",
             CURLOPT_POSTFIELDS => "{$data}",
             CURLOPT_HTTPHEADER => array(
-                "authorization: Bearer {$token}",
+                "authorization: Bearer " . Session::get('token'),
                 "content-type: application/json"
             ),
         ));

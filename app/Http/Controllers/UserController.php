@@ -12,7 +12,7 @@ class UserController extends Controller
            'titre' => "Dashboard Client |",
            'page' => "Dashboard",
         ];
-       return view('User.dashboard', $data);
+       return view('User.dashboard', $data)->with('message','Your are successfully logg in');
     }
 
     public function projetsUser ()

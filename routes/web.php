@@ -26,7 +26,7 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 //route du user
-Route::get('/dashboard', [UserController::class, 'dashoarbdUser'])->name('dashboard');
+Route::get('/dashboard', [UserController::class, 'dashboardUser'])->name('dashboard');
 Route::get('/projets', [UserController::class, 'projetsUser'])->name('project');
 Route::get('/notification', [UserController::class, 'notificationUser'])->name('notification');
 Route::get('/new-projets', [UserController::class, 'newprojetsUser'])->name('new-projets');
