@@ -36,6 +36,7 @@
                                                     <i class="material-icons">face</i>
                                                 </span>
                                             </div>
+
                                             <input type="name" class="form-control" placeholder="name..." name="name">
                                         </div>
                                     </span>

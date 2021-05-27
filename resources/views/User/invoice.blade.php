@@ -27,7 +27,7 @@
                                 <td class="text-danger">90000XAF</td>
                                 <td>
                                     <button type="submit" name="send" class="btn btn-primary">
-                                        <a href="{{ route('invoice-details') }}" style="color:white !important;">Details</a>
+                                        <a href="{{ route('invoice-details')  }}" style="color:white !important;">Details</a>
                                     </button>
                                 </td>
                             </tr>

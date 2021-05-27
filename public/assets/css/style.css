@@ -1,5 +1,8 @@
 .img-connexion {
-    background-image: url('../img/pt4.jpg'); 
-    background-size: cover; 
+    background-image: url('../img/pt4.jpg');
+    background-size: cover;
     background-position: top center;
+}
+.couleur{
+    background: #9c27B0 !important;
 }

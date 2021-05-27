@@ -10,7 +10,7 @@ if (! function_exists( 'activeLI')) {
         if($usename){
             $name = Route::currentRouteName(); //j'utilise le nom de la route
             if(in_array($name, $availableURL)) {
-                return " text-white bg-primary";
+                return " text-white couleur" ;
             }
             return "";
         }
